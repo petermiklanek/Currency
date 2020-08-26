@@ -146,6 +146,11 @@ dependencies {
     // NavigationComponents
     implementation(Dependencies.NavigationComponents.fragment)
 
+    // Room
+    implementation(Dependencies.Room.room)
+    kapt(Dependencies.Room.roomCompiler)
+    implementation(Dependencies.Room.roomKtx)
+
     // Networking
     implementation(Dependencies.Networking.okHttp)
     implementation(Dependencies.Networking.logging)

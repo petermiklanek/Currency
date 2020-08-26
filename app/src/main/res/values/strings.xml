@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Currency</string>
+
+    <string name="error_parse">Nepodařilo se zpracovat odpověď</string>
+    <string name="error_connection">Chyba připojení, zkontrolujte připojení k internetu</string>
+    <string name="error_bad_request">Chyba v odesílaných datech</string>
+    <string name="error_invalid_credentials">Neplatné přihlašovací údaje</string>
+    <string name="error_insufficient_permissions">Nedostatečná oprávnění pro tuto operaci</string>
+    <string name="error_data_not_found">Data nenalezena</string>
+    <string name="error_data_conflict">Konflikt, zpracování se nezdařilo</string>
+    <string name="error_general_server_error">Selhání systému</string>
+    <string name="error_time_incorrect">Systémový čas je nastaven nesprávně</string>
 </resources>

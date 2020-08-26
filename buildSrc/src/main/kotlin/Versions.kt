@@ -37,6 +37,9 @@ object Versions {
     const val threetenbp = "1.4.0"
     const val timber = "4.7.1"
 
+    // room
+    const val room = "2.2.5"
+
     // taste
     const val mvvm = "4.0.0"
 

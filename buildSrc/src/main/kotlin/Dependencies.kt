@@ -51,6 +51,12 @@ object Dependencies {
         const val mvvmAdapters = "app.futured.arkitekt:bindingadapters:${Versions.mvvm}"
     }
 
+    object Room {
+        const val room = "androidx.room:room-runtime:${Versions.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    }
+
     object Other {
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         const val threetenbp = "org.threeten:threetenbp:${Versions.threetenbp}:"
