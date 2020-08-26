@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- TextRegular -->
+
+    <style name="TextRegular.DarkBlue">
+        <item name="android:textColor">@color/dark_blue</item>
+    </style>
+
+    <!-- TextRegular -->
+
+    <style name="TextMedium" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="TextRegular.DarkBlue.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- TextMedium -->
+    <!-- TextMedium -->
+
+    <style name="TextBold" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- TextBold -->
+
+    <style name="TextBold.DarkBlue">
+        <item name="android:textColor">@color/dark_blue</item>
+    </style>
+
+    <style name="TextBold.DarkBlue.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- TextBold -->
+
+</resources>

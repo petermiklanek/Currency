@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="dark_blue">#201f4b</color>
-    <color name="dark_grey">#636379</color>
-    <color name="light_grey">#C4C3CC</color>
-    <color name="pale_grey">#F0F0F3</color>
-    <color name="white">#FFFFFF</color>
-    <color name="white_ripple">#20000000</color>
+    <color name="dark_blue">#E1E1ED</color>
+    <color name="dark_grey">#878794</color>
+    <color name="light_grey">#4D4C55</color>
+    <color name="pale_grey">#121213</color>
+    <color name="white">#202025</color>
+    <color name="white_ripple">#20FFFFFF</color>
     <color name="black">#000000</color>
     <color name="black_99">#99000000</color>
 
@@ -21,7 +21,7 @@
 
     <color name="dark_background">#17171f</color>
     <color name="light_background">@color/pale_grey</color>
-    <color name="base_color">@color/white</color>
-    <color name="bottom_sheet_background">@color/light_background</color>
-    <color name="notification_color">@color/dark_blue</color>
+    <color name="base_color">#FFFFFF</color>
+    <color name="bottom_sheet_background">#141416</color>
+    <color name="notification_color">@color/yellow</color>
 </resources>
