@@ -10,5 +10,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/light_background</item>
     </style>
 </resources>

@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import app.petermiklanek.currency.data.model.Currency
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class CurrencyDao {
@@ -14,13 +15,13 @@ abstract class CurrencyDao {
     abstract suspend fun insertAll(currencies: List<Currency>)
 
     @Query("SELECT * FROM currency")
-    abstract suspend fun getAll(): List<Currency>
+    abstract fun getAll(): Flow<List<Currency>>
 
     @Query("DELETE FROM currency")
     abstract suspend fun deleteAll()
 
     @Transaction
-    suspend fun replaceAll(currencies: List<Currency>) {
+    open suspend fun replaceAll(currencies: List<Currency>) {
         deleteAll()
         insertAll(currencies)
     }

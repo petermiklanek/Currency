@@ -8,6 +8,8 @@
         <item name="colorControlHighlight">@color/dark_grey</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/light_background</item>
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme" />
@@ -24,11 +26,24 @@
         <item name="android:background">@color/light_background</item>
         <item name="android:theme">?actionBarTheme</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
-        <item name="titleTextAppearance">@style/TextBold.DarkBlue.20</item>
+        <item name="titleTextAppearance">@style/TextBold.DarkBlue.32</item>
     </style>
 
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">@color/dark_grey</item>
+    </style>
+
+    <style name="Toolbar.Collapse">
+        <item name="layout_collapseMode">pin</item>
+    </style>
+
+    <style name="CollapsingToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="expandedTitleTextAppearance">@style/TextBold.DarkBlue.20</item>
+        <item name="collapsedTitleTextAppearance">@style/TextBold.DarkBlue.32</item>
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -48,6 +63,11 @@
     <style name="TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textAppearance">@style/TextRegular.DarkBlue.16</item>
         <item name="android:textColor">@color/dark_blue</item>
+    </style>
+
+    <style name="CurrencyEditText">
+        <item name="android:textAppearance">@style/TextBold.Blue.35</item>
+        <item name="android:textColor">@color/blue</item>
     </style>
 
 </resources>

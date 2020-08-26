@@ -2,7 +2,7 @@ package app.petermiklanek.currency.injection.modules
 
 import app.petermiklanek.currency.BuildConfig
 import app.petermiklanek.currency.data.remote.ApiService
-import app.petermiklanek.currency.tools.Constants.Api.BASE_PROD_URL
+import app.petermiklanek.currency.tools.Constants.Api.BASE_URL
 import app.petermiklanek.currency.tools.Constants.Api.TIMEOUT_IN_SECONDS
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -48,7 +48,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient,
         moshi: Moshi
     ) = Retrofit.Builder()
-        .baseUrl(BASE_PROD_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(okHttpClient)
         .validateEagerly(BuildConfig.DEBUG)

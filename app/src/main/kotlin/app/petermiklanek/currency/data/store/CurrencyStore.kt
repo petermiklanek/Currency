@@ -20,7 +20,7 @@ class CurrencyStore @Inject constructor(
 
     // region Room
 
-    suspend fun getAll(): List<Currency> = database.currencyDao().getAll()
+    fun getAll(): Flow<List<Currency>> = database.currencyDao().getAll()
 
     // endregion
 }

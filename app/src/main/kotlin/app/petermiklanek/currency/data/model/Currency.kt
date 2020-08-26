@@ -19,4 +19,6 @@ data class Currency(
             rate = 0.0
         )
     }
+
+    fun getRateText() = rate.toString()
 }

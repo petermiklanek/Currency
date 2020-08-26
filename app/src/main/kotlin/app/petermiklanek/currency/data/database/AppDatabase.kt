@@ -1,6 +1,5 @@
 package app.petermiklanek.currency.data.database
 
-import androidx.databinding.adapters.Converters
 import androidx.room.*
 import app.petermiklanek.currency.data.database.dao.CurrencyDao
 import app.petermiklanek.currency.data.model.Currency
@@ -12,7 +11,6 @@ import app.petermiklanek.currency.data.model.Currency
     version = 1,
     exportSchema = false
 )
-@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

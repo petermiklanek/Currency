@@ -44,6 +44,22 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextBold.DarkBlue.32">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextBold.Blue">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="TextBold.Blue.25">
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="TextBold.Blue.35">
+        <item name="android:textSize">35sp</item>
+    </style>
+
     <!-- TextBold -->
 
 </resources>

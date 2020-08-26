@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="app.petermiklanek.currency.ui.main.MainFragment">
 
@@ -7,23 +8,109 @@
 
         <variable
             name="view"
-            type="app.petermiklanek.currency.ui.main.MainView"/>
+            type="app.petermiklanek.currency.ui.main.MainView" />
 
         <variable
             name="viewModel"
-            type="app.petermiklanek.currency.ui.main.MainViewModel"/>
+            type="app.petermiklanek.currency.ui.main.MainViewModel" />
 
         <variable
             name="viewState"
-            type="app.petermiklanek.currency.ui.main.MainViewState"/>
+            type="app.petermiklanek.currency.ui.main.MainViewState" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:background="@color/light_background"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            style="@style/AppBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height">
 
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/currencies_collapsing_toolbar"
+                style="@style/CollapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleMarginBottom="@dimen/d4"
+                app:expandedTitleMarginStart="@dimen/d4">
+
+                <androidx.appcompat.widget.Toolbar
+                    style="@style/Toolbar.Collapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:title="@string/app_name" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/d4"
+                    android:background="@drawable/bg_white_card"
+                    android:padding="@dimen/d4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/currencies_input"
+                        style="@style/CurrencyEditText"
+                        android:layout_marginEnd="@dimen/d4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789.,"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:maxLength="10"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/currencies_base_code"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        tools:text="123456789" />
+
+                    <TextView
+                        android:id="@+id/currencies_base_code"
+                        style="@style/TextBold.Blue.25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:text="@string/base_currency_code"
+                        app:layout_constraintBottom_toBottomOf="@+id/currencies_input"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/currencies_input"
+                        app:layout_constraintTop_toTopOf="@+id/currencies_input"
+                        tools:text="EUR" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/currencies_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_background"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/d1"
+                    android:paddingBottom="@dimen/d3"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/list_item_currency" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
