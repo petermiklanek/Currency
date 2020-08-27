@@ -6,8 +6,12 @@
     <data>
 
         <variable
-            name="currency"
-            type="app.petermiklanek.currency.data.model.Currency" />
+            name="currencyCode"
+            type="String" />
+
+        <variable
+            name="currencyValue"
+            type="String" />
 
     </data>
 
@@ -29,7 +33,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:gravity="start"
-            android:text="@{currency.code}"
+            android:text="@{currencyCode}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/list_item_currency_rate"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +47,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:gravity="start"
-            android:text="@{currency.rateText}"
+            android:text="@{currencyValue}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/list_item_currency_code"

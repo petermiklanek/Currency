@@ -1,6 +1,6 @@
 package app.petermiklanek.currency.data.remote
 
-import app.petermiklanek.currency.data.model.CurrenciesResponse
+import app.petermiklanek.currency.data.model.response.CurrenciesResponse
 import retrofit2.Response
 import retrofit2.http.*
 

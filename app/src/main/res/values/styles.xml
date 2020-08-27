@@ -40,8 +40,8 @@
     <style name="CollapsingToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="expandedTitleTextAppearance">@style/TextBold.DarkBlue.20</item>
-        <item name="collapsedTitleTextAppearance">@style/TextBold.DarkBlue.32</item>
+        <item name="expandedTitleTextAppearance">@style/TextBold.DarkBlue.32</item>
+        <item name="collapsedTitleTextAppearance">@style/TextBold.DarkBlue.20</item>
         <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
@@ -66,8 +66,25 @@
     </style>
 
     <style name="CurrencyEditText">
-        <item name="android:textAppearance">@style/TextBold.Blue.35</item>
-        <item name="android:textColor">@color/blue</item>
+        <item name="android:textAppearance">@style/TextBold.Green.35</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="ProgressWheel">
+        <item name="matProg_barColor">@color/blue</item>
+        <item name="matProg_barWidth">2dp</item>
+        <item name="matProg_progressIndeterminate">true</item>
+    </style>
+
+    <style name="ProgressWheel.MaxHeight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="ProgressWheel.Large">
+        <item name="android:layout_width">@dimen/d10</item>
+        <item name="matProg_barWidth">3dp</item>
+        <item name="android:layout_height">@dimen/d10</item>
     </style>
 
 </resources>

@@ -21,6 +21,7 @@ object Versions {
     const val constraintLayout = "2.0.0-beta2"
     const val vectorDrawable = "1.0.1"
     const val preference = "1.1.0"
+    const val swipeRefreshLayout = "1.0.0"
 
     // navigation components
     const val navigationComponents = "2.1.0-alpha04"
@@ -32,6 +33,9 @@ object Versions {
     const val moshi = "1.8.0"
     const val okhttp = "4.2.2"
     const val retrofit = "2.6.1"
+
+    // UI
+    const val progressbar = "1.7"
 
     // other
     const val threetenbp = "1.4.0"

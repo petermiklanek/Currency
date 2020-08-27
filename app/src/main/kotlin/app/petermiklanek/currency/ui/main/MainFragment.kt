@@ -22,14 +22,14 @@ class MainFragment : BaseBindingFragment<MainViewModel, MainViewState, FragmentM
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        currencies_collapsing_toolbar.titleTypeface()
+        //currencies_collapsing_toolbar.titleTypeface()
 
         binding.currenciesRecycler.apply {
             adapter = mainAdapter
         }
 
-        viewModel.viewState.currencies.observeNonNull(this) {
-            mainAdapter.submitList(it)
+        viewModel.viewState.currenciesData.observeNonNull(this) { currenciesData ->
+            mainAdapter.submitList(currenciesData)
         }
     }
 }

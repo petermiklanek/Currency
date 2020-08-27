@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     id("com.android.application")
@@ -49,6 +50,10 @@ android {
     compileOptions {
         setSourceCompatibility(JavaVersion.VERSION_1_8)
         setTargetCompatibility(JavaVersion.VERSION_1_8)
+    }
+
+    ((this as? ExtensionAware)?.extensions?.getByName("kotlinOptions") as? org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions)?.apply {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     sourceSets {
@@ -136,6 +141,7 @@ dependencies {
     implementation(Dependencies.Support.lifecycleLiveData)
     implementation(Dependencies.Support.constraintLayout)
     implementation(Dependencies.Support.preference)
+    add("implementation", Dependencies.Support.swipeRefreshLayout)
 
     // MVVM
     implementation(Dependencies.Taste.mvvmCore)
@@ -150,6 +156,9 @@ dependencies {
     implementation(Dependencies.Room.room)
     kapt(Dependencies.Room.roomCompiler)
     implementation(Dependencies.Room.roomKtx)
+
+    // UI
+    implementation(Dependencies.UI.progressbar)
 
     // Networking
     implementation(Dependencies.Networking.okHttp)

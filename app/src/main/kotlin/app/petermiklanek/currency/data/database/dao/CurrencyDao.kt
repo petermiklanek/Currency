@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import app.petermiklanek.currency.data.model.Currency
+import app.petermiklanek.currency.data.model.database.Currency
 import kotlinx.coroutines.flow.Flow
 
 @Dao

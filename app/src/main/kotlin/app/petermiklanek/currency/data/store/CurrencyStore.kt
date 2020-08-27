@@ -1,7 +1,7 @@
 package app.petermiklanek.currency.data.store
 
 import app.petermiklanek.currency.data.database.AppDatabase
-import app.petermiklanek.currency.data.model.Currency
+import app.petermiklanek.currency.data.model.database.Currency
 import app.petermiklanek.currency.data.remote.ApiManager
 import app.petermiklanek.currency.tools.Constants
 import kotlinx.coroutines.flow.Flow

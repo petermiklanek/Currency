@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.data.model
+package app.petermiklanek.currency.data.model.response
 
 data class CurrenciesResponse(
     val base: String,

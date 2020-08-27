@@ -48,15 +48,15 @@
         <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="TextBold.Blue">
-        <item name="android:textColor">@color/blue</item>
+    <style name="TextBold.Green">
+        <item name="android:textColor">@color/green</item>
     </style>
 
-    <style name="TextBold.Blue.25">
+    <style name="TextBold.Green.25">
         <item name="android:textSize">25sp</item>
     </style>
 
-    <style name="TextBold.Blue.35">
+    <style name="TextBold.Green.35">
         <item name="android:textSize">35sp</item>
     </style>
 

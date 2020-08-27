@@ -21,6 +21,7 @@ object Dependencies {
         const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
         const val vectordrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
         const val preference = "androidx.preference:preference-ktx:${Versions.preference}"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
     }
 
     object DependencyInjection {
@@ -42,6 +43,10 @@ object Dependencies {
         const val logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    }
+
+    object UI {
+        const val progressbar = "com.pnikosis:materialish-progress:${Versions.progressbar}"
     }
 
     object Taste {

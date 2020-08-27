@@ -1,7 +1,7 @@
 package app.petermiklanek.currency.data.remote
 
 import android.content.res.Resources
-import app.petermiklanek.currency.data.model.CurrenciesResponse
+import app.petermiklanek.currency.data.model.response.CurrenciesResponse
 import com.thefuntasty.oneticket.data.remote.ApiExecutor
 import javax.inject.Inject
 

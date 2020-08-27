@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.data.model
+package app.petermiklanek.currency.data.model.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

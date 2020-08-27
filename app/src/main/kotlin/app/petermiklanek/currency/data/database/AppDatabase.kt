@@ -2,7 +2,7 @@ package app.petermiklanek.currency.data.database
 
 import androidx.room.*
 import app.petermiklanek.currency.data.database.dao.CurrencyDao
-import app.petermiklanek.currency.data.model.Currency
+import app.petermiklanek.currency.data.model.database.Currency
 
 @Database(
     entities = [
