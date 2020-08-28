@@ -29,8 +29,9 @@
         <TextView
             android:id="@+id/list_item_currency_code"
             style="@style/TextBold.DarkBlue.20"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d4"
             android:gravity="start"
             android:text="@{currencyCode}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,10 +42,10 @@
 
         <TextView
             android:id="@+id/list_item_currency_rate"
-            style="@style/TextRegular.DarkBlue.16"
-            android:layout_width="wrap_content"
+            style="@style/TextRegular.Green.16"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="start"
+            android:gravity="end"
             android:text="@{currencyValue}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

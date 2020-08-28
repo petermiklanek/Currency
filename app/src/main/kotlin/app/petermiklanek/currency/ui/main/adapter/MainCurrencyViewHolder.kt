@@ -10,12 +10,12 @@ class MainCurrencyViewHolder(private val binding: ListItemCurrencyBinding) : Rec
 
     fun bind(data: UICurrencyData) {
         binding.currencyCode = data.currency.code
-        binding.currencyValue = calculateConvertValue(data)
+        setConvertValue(data)
         binding.executePendingBindings()
     }
 
-    private fun calculateConvertValue(data: UICurrencyData): String {
-        return (if (data.convertValue == null || data.convertValue == 0.0) {
+    private fun setConvertValue(data: UICurrencyData){
+        binding.currencyValue = (if (data.convertValue == null || data.convertValue == 0.0) {
             data.currency.rate
         } else {
             data.currency.rate * data.convertValue

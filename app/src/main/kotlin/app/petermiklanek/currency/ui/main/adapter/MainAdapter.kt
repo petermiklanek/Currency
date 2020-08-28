@@ -11,18 +11,28 @@ import javax.inject.Inject
 
 class MainAdapter @Inject constructor() : ListAdapter<UICurrencyData, MainCurrencyViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListItemCurrencyBinding.inflate(parent.layoutInflater(), parent, false).let {
-            MainCurrencyViewHolder(it)
-        }
+    private val data = mutableListOf<UICurrencyData>()
 
-    override fun onBindViewHolder(holder: MainCurrencyViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainCurrencyViewHolder {
+        return ListItemCurrencyBinding
+            .inflate(parent.layoutInflater(), parent, false)
+            .let { MainCurrencyViewHolder(it) }
+    }
+
+    override fun onBindViewHolder(holder: MainCurrencyViewHolder, position: Int) =
+        holder.bind(data[position])
+
+    override fun getItemCount() = data.size
+
+    fun upadteData(data: List<UICurrencyData>) {
+        this.data.clear()
+        this.data.addAll(data)
+        notifyDataSetChanged()
     }
 
     object DiffCallback : DiffUtil.ItemCallback<UICurrencyData>() {
-        override fun areItemsTheSame(oldItem: UICurrencyData, newItem: UICurrencyData) = oldItem.currency == newItem.currency
+        override fun areItemsTheSame(oldItem: UICurrencyData, newItem: UICurrencyData) = false
 
-        override fun areContentsTheSame(oldItem: UICurrencyData, newItem: UICurrencyData) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: UICurrencyData, newItem: UICurrencyData) = false
     }
 }

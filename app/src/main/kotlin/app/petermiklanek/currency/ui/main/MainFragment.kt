@@ -5,8 +5,7 @@ import android.view.View
 import app.futured.arkitekt.core.livedata.observeNonNull
 import app.petermiklanek.currency.R
 import app.petermiklanek.currency.databinding.FragmentMainBinding
-import app.petermiklanek.currency.tools.extensions.showToast
-import app.petermiklanek.currency.tools.extensions.titleTypeface
+import app.petermiklanek.currency.tools.extensions.*
 import app.petermiklanek.currency.ui.base.BaseBindingFragment
 import app.petermiklanek.currency.ui.main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -28,7 +27,9 @@ class MainFragment : BaseBindingFragment<MainViewModel, MainViewState, FragmentM
         }
 
         viewModel.viewState.currenciesData.observeNonNull(this) { currenciesData ->
-            mainAdapter.submitList(currenciesData)
+            binding.currenciesRecycler.visible(currenciesData.isNotEmpty())
+            binding.currenciesEmpty.visible(currenciesData.isEmpty())
+            mainAdapter.upadteData(currenciesData)
         }
 
         observeEvent(ShowToastEvent::class) {

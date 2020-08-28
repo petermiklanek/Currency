@@ -58,7 +58,8 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/state_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,7 +109,8 @@
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:animateLayoutChanges="true">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/currencies_recycler"
@@ -116,8 +118,6 @@
                             android:layout_height="match_parent"
                             android:background="@color/light_background"
                             android:clipToPadding="false"
-                            android:orientation="vertical"
-                            android:overScrollMode="never"
                             android:paddingTop="@dimen/d1"
                             android:paddingBottom="@dimen/d3"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -125,11 +125,13 @@
                             tools:listitem="@layout/list_item_currency" />
 
                         <LinearLayout
+                            android:id="@+id/currencies_empty"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="@dimen/d4"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <TextView
                                 style="@style/TextBold.DarkBlue.20"

@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
         with(viewState) {
             observeCurrenciesUseCase.execute {
                 onNext {
-                    currencies.value = it
+                    currencies.value = it.take(5)
                 }
             }
         }

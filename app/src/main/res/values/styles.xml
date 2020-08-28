@@ -71,7 +71,7 @@
     </style>
 
     <style name="ProgressWheel">
-        <item name="matProg_barColor">@color/blue</item>
+        <item name="matProg_barColor">@color/green</item>
         <item name="matProg_barWidth">2dp</item>
         <item name="matProg_progressIndeterminate">true</item>
     </style>
