@@ -17,6 +17,8 @@ class MainViewState @Inject constructor() : ViewState {
 
     val convertValue = MutableLiveData<String>("1")
 
+    val isRefreshing = DefaultValueLiveData(false)
+
     internal val state = DefaultValueLiveData<State<Unit>>(StateLoading)
 
     val placeholderLayoutState = state.map {

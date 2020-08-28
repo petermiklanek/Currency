@@ -14,6 +14,11 @@ fun PlaceholderLayout.bindRefreshing(isRefreshing: Boolean) {
     setRefreshing(isRefreshing)
 }
 
+@BindingAdapter("swipeRefresh")
+fun PlaceholderLayout.bindSwipeRefresh(callback: () -> Unit) {
+    setOnRefresh(SwipeRefreshLayout.OnRefreshListener { callback() })
+}
+
 @BindingAdapter("refreshEnabled")
 fun PlaceholderLayout.bindRefreshEnabled(isEnabled: Boolean) {
     setRefreshEnabled(isEnabled)

@@ -26,7 +26,7 @@
         <item name="android:background">@color/light_background</item>
         <item name="android:theme">?actionBarTheme</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
-        <item name="titleTextAppearance">@style/TextBold.DarkBlue.32</item>
+        <item name="titleTextAppearance">@style/TextBold.DarkBlue.20</item>
     </style>
 
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">

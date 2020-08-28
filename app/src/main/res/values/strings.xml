@@ -1,7 +1,18 @@
 <resources>
+    <!-- App -->
     <string name="app_name">Currency</string>
-    <string name="base_currency_code">EUR</string>
 
+    <!-- Base -->
+    <string name="base_currency_code">EUR</string>
+    <string name="base_currency_input">1</string>
+
+    <!-- Actions -->
+    <string name="action_add">Přidat</string>
+
+    <!-- Empty -->
+    <string name="empty_currencies">Zatím nemáte žádné oblíbené měny.</string>
+
+    <!-- Error -->
     <string name="error_parse">Nepodařilo se zpracovat odpověď</string>
     <string name="error_connection">Chyba připojení, zkontrolujte připojení k internetu</string>
     <string name="error_bad_request">Chyba v odesílaných datech</string>

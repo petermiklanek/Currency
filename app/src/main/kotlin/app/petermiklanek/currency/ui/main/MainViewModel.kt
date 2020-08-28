@@ -20,11 +20,11 @@ class MainViewModel @Inject constructor(
                     state.value = StateLoading
                 }
                 onSuccess {
-                    state.value = StateContent(it)
+                    state.value = StateContent(Unit)
                 }
                 onError {
-                    Timber.e(it)
-                    state.value = StateError(throwable = it)
+                    state.value = StateContent(Unit)
+                    sendEvent(ShowToastEvent(it.message.toString()))
                 }
             }
         }
@@ -36,5 +36,28 @@ class MainViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun onSwipeRefresh() {
+        with(viewState) {
+            syncCurrenciesUseCase.execute {
+                onStart {
+                    isRefreshing.value = true
+                    state.value = StateContent(Unit)
+                }
+                onSuccess {
+                    isRefreshing.value = false
+                    state.value = StateContent(Unit)
+                }
+                onError {
+                    isRefreshing.value = false
+                    sendEvent(ShowToastEvent(it.message.toString()))
+                }
+            }
+        }
+    }
+
+    fun addFavouriteCurrency() {
+
     }
 }

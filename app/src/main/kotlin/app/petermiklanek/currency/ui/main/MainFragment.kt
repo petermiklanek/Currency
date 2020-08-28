@@ -5,6 +5,7 @@ import android.view.View
 import app.futured.arkitekt.core.livedata.observeNonNull
 import app.petermiklanek.currency.R
 import app.petermiklanek.currency.databinding.FragmentMainBinding
+import app.petermiklanek.currency.tools.extensions.showToast
 import app.petermiklanek.currency.tools.extensions.titleTypeface
 import app.petermiklanek.currency.ui.base.BaseBindingFragment
 import app.petermiklanek.currency.ui.main.adapter.MainAdapter
@@ -22,14 +23,16 @@ class MainFragment : BaseBindingFragment<MainViewModel, MainViewState, FragmentM
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //currencies_collapsing_toolbar.titleTypeface()
-
         binding.currenciesRecycler.apply {
             adapter = mainAdapter
         }
 
         viewModel.viewState.currenciesData.observeNonNull(this) { currenciesData ->
             mainAdapter.submitList(currenciesData)
+        }
+
+        observeEvent(ShowToastEvent::class) {
+            showToast(it.message)
         }
     }
 }
