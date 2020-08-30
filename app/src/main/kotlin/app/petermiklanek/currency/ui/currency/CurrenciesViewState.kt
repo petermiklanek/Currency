@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.ui.main
+package app.petermiklanek.currency.ui.currency
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -6,16 +6,17 @@ import app.futured.arkitekt.core.ViewState
 import app.futured.arkitekt.core.livedata.DefaultValueLiveData
 import app.futured.arkitekt.core.livedata.combineLiveData
 import app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayoutState
-import app.petermiklanek.currency.data.model.database.combi.FavouriteCurrencyAll
+import app.petermiklanek.currency.data.model.database.Currency
+import app.petermiklanek.currency.data.model.database.FavouriteCurrency
 import app.petermiklanek.currency.data.model.state.*
-import app.petermiklanek.currency.data.model.ui.UIFavouriteCurrencyData
+import app.petermiklanek.currency.data.model.ui.UICurrencyData
 import javax.inject.Inject
 
-class MainViewState @Inject constructor() : ViewState {
+class CurrenciesViewState @Inject constructor() : ViewState {
 
-    val favouriteCurrencies = MutableLiveData<List<FavouriteCurrencyAll>>(listOf())
+    val currencies = MutableLiveData<List<Currency>>(listOf())
 
-    val convertValue = MutableLiveData<String>("1")
+    val favouriteCurrencies = MutableLiveData<List<FavouriteCurrency>>(listOf())
 
     val isRefreshing = DefaultValueLiveData(false)
 
@@ -30,7 +31,13 @@ class MainViewState @Inject constructor() : ViewState {
         }
     }
 
-    val currenciesData = combineLiveData(favouriteCurrencies, convertValue) { currencies, convertValue ->
-        currencies.map { UIFavouriteCurrencyData(it, convertValue.toDoubleOrNull()) }
+    val currenciesData = combineLiveData(currencies, favouriteCurrencies) { currencies, favouriteCurrencies ->
+        currencies.map { currency ->
+            val favouriteCurrencyCodes = favouriteCurrencies.map { it.currency_code }
+            UICurrencyData(
+                currency = currency,
+                isFavourite = currency.code in favouriteCurrencyCodes
+            )
+        }
     }
 }

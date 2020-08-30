@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.ui.common.ui
+package app.petermiklanek.currency.ui.common.ui.placeholder
 
 import android.annotation.SuppressLint
 import android.content.Context

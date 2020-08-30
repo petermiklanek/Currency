@@ -1,15 +1,14 @@
 package app.petermiklanek.currency.ui.main
 
 import app.futured.arkitekt.crusecases.BaseCrViewModel
-import app.petermiklanek.currency.data.domain.ObserveCurrenciesUseCase
-import app.petermiklanek.currency.data.domain.SyncCurrenciesUseCase
+import app.petermiklanek.currency.data.domain.currency.SyncCurrenciesUseCase
+import app.petermiklanek.currency.data.domain.favourite.ObserveFavouriteCurrencyAllUseCase
 import app.petermiklanek.currency.data.model.state.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     override val viewState: MainViewState,
-    private val observeCurrenciesUseCase: ObserveCurrenciesUseCase,
+    private val observeFavouriteCurrencyAllUseCase: ObserveFavouriteCurrencyAllUseCase,
     private val syncCurrenciesUseCase: SyncCurrenciesUseCase
 ) : BaseCrViewModel<MainViewState>() {
 
@@ -30,9 +29,9 @@ class MainViewModel @Inject constructor(
         }
 
         with(viewState) {
-            observeCurrenciesUseCase.execute {
+            observeFavouriteCurrencyAllUseCase.execute {
                 onNext {
-                    currencies.value = it.take(5)
+                    favouriteCurrencies.value = it
                 }
             }
         }

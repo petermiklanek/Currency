@@ -10,12 +10,8 @@
             type="String" />
 
         <variable
-            name="isFavourite"
-            type="Boolean" />
-
-        <variable
-            name="view"
-            type="app.petermiklanek.currency.ui.currency.CurrenciesView" />
+            name="currencyValue"
+            type="String" />
 
     </data>
 
@@ -49,23 +45,13 @@
             style="@style/TextBold.Green.16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/d4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/list_item_favourite"
-            app:layout_constraintStart_toEndOf="@+id/list_item_currency_code"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="1 USD/EUR" />
-
-        <app.petermiklanek.currency.ui.common.ui.like.LikeButton
-            android:id="@+id/list_item_favourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:isFavourite="@{isFavourite}"
+            android:gravity="end"
+            android:text="@{currencyValue}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/list_item_currency_rate"
+            app:layout_constraintStart_toEndOf="@+id/list_item_currency_code"
             app:layout_constraintTop_toTopOf="parent"
-            app:onLikeClick="@{() ->view.onFavouriteCurrency(currencyCode)}" />
+            tools:text="1.00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

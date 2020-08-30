@@ -8,9 +8,11 @@
 
     <!-- Actions -->
     <string name="action_add">Přidat</string>
+    <string name="action_load">Načítat</string>
 
     <!-- Empty -->
-    <string name="empty_currencies">Zatím nemáte žádné oblíbené měny.</string>
+    <string name="empty_currencies">Zatím zde nejsou žádné měny. Skuste znovu načítat obsah.</string>
+    <string name="empty_favourite_currencies">Zatím nemáte žádné oblíbené měny.</string>
 
     <!-- Error -->
     <string name="error_parse">Nepodařilo se zpracovat odpověď</string>
@@ -22,4 +24,7 @@
     <string name="error_data_conflict">Konflikt, zpracování se nezdařilo</string>
     <string name="error_general_server_error">Selhání systému</string>
     <string name="error_time_incorrect">Systémový čas je nastaven nesprávně</string>
+
+    <!-- CurrenciesFragment -->
+    <string name="currencies_title">Zoznam měn</string>
 </resources>

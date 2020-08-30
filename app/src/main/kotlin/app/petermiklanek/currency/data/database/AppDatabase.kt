@@ -2,11 +2,14 @@ package app.petermiklanek.currency.data.database
 
 import androidx.room.*
 import app.petermiklanek.currency.data.database.dao.CurrencyDao
+import app.petermiklanek.currency.data.database.dao.FavouriteCurrencyDao
 import app.petermiklanek.currency.data.model.database.Currency
+import app.petermiklanek.currency.data.model.database.FavouriteCurrency
 
 @Database(
     entities = [
-        Currency::class
+        Currency::class,
+        FavouriteCurrency::class
     ],
     version = 1,
     exportSchema = false
@@ -18,4 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun currencyDao(): CurrencyDao
+
+    abstract fun favouriteCurrencyDao(): FavouriteCurrencyDao
+
 }

@@ -1,7 +1,8 @@
-package app.petermiklanek.currency.ui.common.ui
+package app.petermiklanek.currency.ui.common.ui.placeholder
 
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayout
 
 // Explicitly declared binding adapters, so AS can make suggestions in XML layout
 // As of AS4.1, binding autocomplete still doesn't work for public setter methods

@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.data.domain
+package app.petermiklanek.currency.data.domain.currency
 
 import app.futured.arkitekt.crusecases.UseCase
 import app.petermiklanek.currency.data.database.AppDatabase

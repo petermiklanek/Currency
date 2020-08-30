@@ -1,4 +1,4 @@
-package app.petermiklanek.currency.ui.main
+package app.petermiklanek.currency.ui.currency
 
 import android.os.Bundle
 import android.view.View
@@ -7,15 +7,17 @@ import app.petermiklanek.currency.R
 import app.petermiklanek.currency.databinding.FragmentMainBinding
 import app.petermiklanek.currency.tools.extensions.*
 import app.petermiklanek.currency.ui.base.BaseBindingFragment
+import app.petermiklanek.currency.ui.currency.adapter.CurrenciesAdapter
+import app.petermiklanek.currency.ui.main.*
 import app.petermiklanek.currency.ui.main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
-class MainFragment : BaseBindingFragment<MainViewModel, MainViewState, FragmentMainBinding>(), MainView {
+class CurrenciesFragment : BaseBindingFragment<CurrenciesViewModel, CurrenciesViewState, FragmentMainBinding>(), CurrenciesView {
 
-    @Inject override lateinit var viewModelFactory: MainViewModelFactory
+    @Inject override lateinit var viewModelFactory: CurrenciesViewModelFactory
 
-    @Inject lateinit var mainAdapter: MainAdapter
+    @Inject lateinit var currenciesAdapter: CurrenciesAdapter
 
     override val layoutResId = R.layout.fragment_main
 
@@ -23,17 +25,21 @@ class MainFragment : BaseBindingFragment<MainViewModel, MainViewState, FragmentM
         super.onViewCreated(view, savedInstanceState)
 
         binding.currenciesRecycler.apply {
-            adapter = mainAdapter
+            adapter = currenciesAdapter
         }
 
         viewModel.viewState.currenciesData.observeNonNull(this) { currenciesData ->
             binding.currenciesRecycler.visible(currenciesData.isNotEmpty())
             binding.currenciesEmpty.visible(currenciesData.isEmpty())
-            mainAdapter.updateData(currenciesData)
+            currenciesAdapter.updateData(currenciesData)
         }
 
         observeEvent(ShowToastEvent::class) {
             showToast(it.message)
         }
+    }
+
+    override fun onFavouriteCurrency(code: String) {
+        viewModel.onFavouriteCurrency(code)
     }
 }

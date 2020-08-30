@@ -8,15 +8,15 @@
 
         <variable
             name="view"
-            type="app.petermiklanek.currency.ui.main.MainView" />
+            type="app.petermiklanek.currency.ui.currency.CurrenciesView" />
 
         <variable
             name="viewModel"
-            type="app.petermiklanek.currency.ui.main.MainViewModel" />
+            type="app.petermiklanek.currency.ui.currency.CurrenciesViewModel" />
 
         <variable
             name="viewState"
-            type="app.petermiklanek.currency.ui.main.MainViewState" />
+            type="app.petermiklanek.currency.ui.currency.CurrenciesViewState" />
 
         <variable
             name="onRetryClick"
@@ -38,7 +38,7 @@
                 style="@style/Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="@string/app_name" />
+                app:title="@string/currencies_title" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,7 +53,7 @@
             app:refreshEnabled="@{true}"
             app:refreshing="@{viewState.isRefreshing}"
             app:state="@{viewState.placeholderLayoutState}"
-            app:swipeRefresh="@{() -> viewModel.onSwipeRefresh()}">
+            app:swipeRefresh="@{() -> viewModel.onRefresh()}">
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/state_content"
@@ -65,47 +65,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/d4"
-                        android:background="@drawable/bg_white_card"
-                        android:padding="@dimen/d4">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/currencies_input"
-                            style="@style/CurrencyEditText"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/d4"
-                            android:digits="0123456789.,"
-                            android:hint="@string/base_currency_input"
-                            android:inputType="numberDecimal"
-                            android:lines="1"
-                            android:maxLength="10"
-                            android:text="@={viewState.convertValue}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/currencies_base_code"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="parent"
-                            tools:text="123456789" />
-
-                        <TextView
-                            android:id="@+id/currencies_base_code"
-                            style="@style/TextBold.Green.25"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="?attr/selectableItemBackground"
-                            android:gravity="start"
-                            android:text="@string/base_currency_code"
-                            app:layout_constraintBottom_toBottomOf="@+id/currencies_input"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/currencies_input"
-                            app:layout_constraintTop_toTopOf="@+id/currencies_input"
-                            tools:text="EUR" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -123,7 +82,7 @@
                             android:paddingBottom="@dimen/d3"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             tools:itemCount="10"
-                            tools:listitem="@layout/list_item_favourite_currency" />
+                            tools:listitem="@layout/list_item_currency" />
 
                         <LinearLayout
                             android:id="@+id/currencies_empty"
@@ -140,7 +99,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/d4"
                                 android:gravity="center"
-                                android:text="@string/empty_currencies" />
+                                android:text="@string/empty_favourite_currencies" />
 
                             <TextView
                                 style="@style/TextBold.White.20"
@@ -149,9 +108,9 @@
                                 android:layout_marginBottom="@dimen/d4"
                                 android:background="@drawable/bg_green_card"
                                 android:gravity="center"
-                                android:onClick="@{() -> viewModel.addFavouriteCurrency()}"
+                                android:onClick="@{() -> viewModel.onRefresh()}"
                                 android:padding="@dimen/d3"
-                                android:text="@string/action_add" />
+                                android:text="@string/action_load" />
 
                         </LinearLayout>
 
