@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="app.petermiklanek.currency.ui.main.MainFragment">
 
@@ -7,22 +8,189 @@
 
         <variable
             name="view"
-            type="app.petermiklanek.currency.ui.main.MainView"/>
+            type="app.petermiklanek.currency.ui.main.MainView" />
 
         <variable
             name="viewModel"
-            type="app.petermiklanek.currency.ui.main.MainViewModel"/>
+            type="app.petermiklanek.currency.ui.main.MainViewModel" />
 
         <variable
             name="viewState"
-            type="app.petermiklanek.currency.ui.main.MainViewState"/>
+            type="app.petermiklanek.currency.ui.main.MainViewState" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            style="@style/AppBar.Lift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/organization_employees_toolbar"
+                style="@style/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/app_name" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:placeholder_content="@id/state_content"
+            app:placeholder_default_state="content"
+            app:placeholder_loading="@id/state_loading"
+            app:refreshEnabled="@{true}"
+            app:refreshing="@{viewState.isRefreshing}"
+            app:state="@{viewState.placeholderLayoutState}"
+            app:swipeRefresh="@{() -> viewModel.onSwipeRefresh()}">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/state_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/d4"
+                        android:background="@drawable/bg_white_card"
+                        android:padding="@dimen/d4">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/currencies_input"
+                            style="@style/CurrencyEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/d4"
+                            android:digits="0123456789.,"
+                            android:hint="@string/base_currency_input"
+                            android:inputType="numberDecimal"
+                            android:lines="1"
+                            android:maxLength="10"
+                            android:text="@={viewState.convertValue}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/currencies_base_code"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="parent"
+                            tools:text="123456789" />
+
+                        <TextView
+                            android:id="@+id/currencies_base_code"
+                            style="@style/TextBold.Green.25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:text="@string/base_currency_code"
+                            app:layout_constraintBottom_toBottomOf="@+id/currencies_input"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/currencies_input"
+                            app:layout_constraintTop_toTopOf="@+id/currencies_input"
+                            tools:text="EUR" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:animateLayoutChanges="true">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/currencies_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_background"
+                            android:clipToPadding="false"
+                            android:overScrollMode="never"
+                            android:paddingTop="@dimen/d1"
+                            android:paddingBottom="@dimen/d3"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="10"
+                            tools:listitem="@layout/list_item_favourite_currency" />
+
+                        <LinearLayout
+                            android:id="@+id/currencies_empty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/d4"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/TextBold.DarkBlue.20"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/d4"
+                                android:gravity="center"
+                                android:text="@string/empty_favourite_currencies" />
+
+                            <TextView
+                                style="@style/TextBold.White.20"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/d4"
+                                android:background="@drawable/bg_green_card"
+                                android:gravity="center"
+                                android:onClick="@{() -> viewModel.addFavouriteCurrency()}"
+                                android:padding="@dimen/d3"
+                                android:text="@string/action_add"
+                                android:textColor="@color/base_color" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <FrameLayout
+                android:id="@+id/state_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.pnikosis.materialishprogress.ProgressWheel
+                    style="@style/ProgressWheel.Large"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/d8" />
+
+            </FrameLayout>
+        </app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:animateLayoutChanges="true">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/currencies_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/d2"
+                android:layout_marginBottom="@dimen/d4"
+                android:onClick="@{() -> viewModel.addFavouriteCurrency()}"
+                android:visibility="gone"
+                app:backgroundTint="@color/green_ripple"
+                app:borderWidth="0dp"
+                app:elevation="@dimen/d1"
+                app:srcCompat="@drawable/ic_add"
+                app:tint="@color/base_color"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

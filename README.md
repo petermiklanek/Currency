@@ -7,9 +7,8 @@ Currency
 
 ## Project info
 
-- ApplicationId: ~~`app.petermiklanek.currency`~~
+- ApplicationId: `app.petermiklanek.currency`
 - Supports: **Dark mode, landscape orientation**
-- Design: ~~Figma/Zeplin (add link)~~
 - Architecture: [MVVM](https://github.com/futuredapp/arkitekt)
 - Interactors: Kotlin Coroutines
 - Product Flavors: mock, dev, prod

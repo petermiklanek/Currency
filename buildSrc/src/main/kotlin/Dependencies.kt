@@ -21,6 +21,7 @@ object Dependencies {
         const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
         const val vectordrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
         const val preference = "androidx.preference:preference-ktx:${Versions.preference}"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
     }
 
     object DependencyInjection {
@@ -44,11 +45,21 @@ object Dependencies {
         const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     }
 
+    object UI {
+        const val progressbar = "com.pnikosis:materialish-progress:${Versions.progressbar}"
+    }
+
     object Taste {
         const val mvvmCore = "app.futured.arkitekt:core:${Versions.mvvm}"
         const val mvvmDagger = "app.futured.arkitekt:dagger:${Versions.mvvm}"
         const val mvvmCrUseCases = "app.futured.arkitekt:cr-usecases:${Versions.mvvm}"
         const val mvvmAdapters = "app.futured.arkitekt:bindingadapters:${Versions.mvvm}"
+    }
+
+    object Room {
+        const val room = "androidx.room:room-runtime:${Versions.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     }
 
     object Other {

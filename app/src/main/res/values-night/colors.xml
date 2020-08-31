@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_blue">#E1E1ED</color>
+    <color name="dark_grey">#878794</color>
+    <color name="light_grey">#4D4C55</color>
+    <color name="pale_grey">#121213</color>
+    <color name="white">#202025</color>
+    <color name="white_ripple">#20FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_99">#99000000</color>
+
+    <color name="blue">#12b8dc</color>
+    <color name="blue_ripple">#02738d</color>
+    <color name="orange">#FF8B41</color>
+    <color name="orange_ripple">#CF5E15</color>
+    <color name="red">#DA3B3B</color>
+    <color name="red_ripple">#940C0C</color>
+    <color name="green">#34C359</color>
+    <color name="green_ripple">#2B9E49</color>
+    <color name="yellow">#FFCD06</color>
+
+    <color name="dark_background">#17171f</color>
+    <color name="light_background">@color/pale_grey</color>
+    <color name="base_color">#FFFFFF</color>
+    <color name="bottom_sheet_background">#141416</color>
+    <color name="notification_color">@color/yellow</color>
+</resources>

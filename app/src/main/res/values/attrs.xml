@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Placeholderlayout -->
+
+    <attr name="placeholder_content" format="reference"/>
+    <attr name="placeholder_loading" format="reference"/>
+    <attr name="placeholder_empty" format="reference"/>
+    <attr name="placeholder_error" format="reference"/>
+    <attr name="placeholder_default_state" format="enum">
+        <enum name="loading" value="0"/>
+        <enum name="content" value="1"/>
+        <enum name="empty" value="2"/>
+        <enum name="error" value="3"/>
+    </attr>
+
+    <declare-styleable name="PlaceholderLayout">
+        <attr name="placeholder_content"/>
+        <attr name="placeholder_loading"/>
+        <attr name="placeholder_empty"/>
+        <attr name="placeholder_error"/>
+        <attr name="placeholder_default_state"/>
+    </declare-styleable>
+
+    <declare-styleable name="SimplePlaceholderLayout">
+        <attr name="placeholder_content"/>
+        <attr name="placeholder_loading"/>
+        <attr name="placeholder_empty"/>
+        <attr name="placeholder_error"/>
+        <attr name="placeholder_default_state"/>
+    </declare-styleable>
+
+</resources>

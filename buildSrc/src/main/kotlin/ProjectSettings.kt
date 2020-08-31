@@ -4,9 +4,9 @@ object ProjectSettings {
     const val applicationId = "app.petermiklanek.currency"
     const val compileSdkVersion = 29
     const val targetSdk = 29
-    const val minSdk = 21
+    const val minSdk = 24
     const val versionName = "1.0.0"
-    val versionCode = System.getenv("GITHUB_RUN_NUMBER")?.toInt() ?: 1
+    val versionCode = 1
 
     object Flavor {
         const val DIMENSION = "api"

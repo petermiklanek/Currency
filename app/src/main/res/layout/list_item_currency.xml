@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="currencyCode"
+            type="String" />
+
+        <variable
+            name="isFavourite"
+            type="Boolean" />
+
+        <variable
+            name="view"
+            type="app.petermiklanek.currency.ui.currency.CurrenciesView" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d4"
+        android:layout_marginTop="@dimen/d1"
+        android:layout_marginEnd="@dimen/d4"
+        android:layout_marginBottom="@dimen/d1"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_white_card"
+        android:padding="@dimen/d4">
+
+        <TextView
+            android:id="@+id/list_item_currency_code"
+            style="@style/TextBold.DarkBlue.20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d4"
+            android:gravity="start"
+            android:text="@{currencyCode}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/list_item_currency_rate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CZK" />
+
+        <TextView
+            android:id="@+id/list_item_currency_rate"
+            style="@style/TextBold.Green.16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d4"
+            android:text="@{@string/currencies_per_base_currency(currencyCode)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/list_item_favourite"
+            app:layout_constraintStart_toEndOf="@+id/list_item_currency_code"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1 USD/EUR" />
+
+        <app.petermiklanek.currency.ui.common.ui.like.LikeButton
+            android:id="@+id/list_item_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isFavourite="@{isFavourite}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/list_item_currency_rate"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onLikeClick="@{() -> view.onFavouriteCurrency(currencyCode)}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

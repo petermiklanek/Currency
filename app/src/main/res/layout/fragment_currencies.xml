@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="app.petermiklanek.currency.ui.main.MainFragment">
+
+    <data>
+
+        <variable
+            name="view"
+            type="app.petermiklanek.currency.ui.currency.CurrenciesView" />
+
+        <variable
+            name="viewModel"
+            type="app.petermiklanek.currency.ui.currency.CurrenciesViewModel" />
+
+        <variable
+            name="viewState"
+            type="app.petermiklanek.currency.ui.currency.CurrenciesViewState" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            style="@style/AppBar.Lift"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/organization_employees_toolbar"
+                style="@style/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_back"
+                app:navigationOnClickListener="@{() -> viewModel.onBack()}"
+                app:title="@string/currencies_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:placeholder_content="@id/state_content"
+            app:placeholder_default_state="content"
+            app:placeholder_empty="@id/state_empty"
+            app:placeholder_loading="@id/state_loading"
+            app:refreshEnabled="@{true}"
+            app:refreshing="@{viewState.isRefreshing}"
+            app:state="@{viewState.placeholderLayoutState}"
+            app:swipeRefresh="@{() -> viewModel.onRefresh()}">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/state_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/d4"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/card_radius"
+                        app:cardElevation="@dimen/d1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:animateLayoutChanges="true"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="@dimen/d6"
+                                    android:layout_height="@dimen/d6"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/d4"
+                                    android:layout_marginEnd="@dimen/d4"
+                                    android:tint="@color/dark_grey"
+                                    app:srcCompat="@drawable/ic_search" />
+                            </LinearLayout>
+
+                            <EditText
+                                android:id="@+id/search_text"
+                                style="@style/TextRegular.DarkBlue.16"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:inputType="textCapCharacters"
+                                android:maxLength="3"
+                                android:text="@={viewState.search}"
+                                android:textAllCaps="true"
+                                android:textColorHint="@color/light_grey"
+                                tools:text="CZK" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:animateLayoutChanges="true">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/currencies_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_background"
+                            android:clipToPadding="false"
+                            android:overScrollMode="never"
+                            android:paddingTop="@dimen/d1"
+                            android:paddingBottom="@dimen/d3"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="10"
+                            tools:listitem="@layout/list_item_currency" />
+
+                    </FrameLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/state_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/d4"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextBold.DarkBlue.20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/d4"
+                    android:gravity="center"
+                    android:text="@string/empty_favourite_currencies" />
+
+                <TextView
+                    style="@style/TextBold.White.20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/d4"
+                    android:background="@drawable/bg_green_card"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onRefresh()}"
+                    android:padding="@dimen/d3"
+                    android:text="@string/action_load"
+                    android:textColor="@color/base_color" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/state_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.pnikosis.materialishprogress.ProgressWheel
+                    style="@style/ProgressWheel.Large"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/d8" />
+
+            </FrameLayout>
+        </app.petermiklanek.currency.ui.common.ui.placeholder.PlaceholderLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
