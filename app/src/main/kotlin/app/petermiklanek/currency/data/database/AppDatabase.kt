@@ -11,7 +11,7 @@ import app.petermiklanek.currency.data.model.database.FavouriteCurrency
         Currency::class,
         FavouriteCurrency::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
