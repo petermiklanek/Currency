@@ -57,6 +57,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun addFavouriteCurrency() {
-
+        sendEvent(NavigateToCurrenciesEvent)
     }
 }

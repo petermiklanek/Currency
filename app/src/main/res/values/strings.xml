@@ -3,7 +3,7 @@
     <string name="app_name">Currency</string>
 
     <!-- Base -->
-    <string name="base_currency_code">EUR</string>
+    <string name="base_currency_code">€ EUR</string>
     <string name="base_currency_input">1</string>
 
     <!-- Actions -->
@@ -27,4 +27,5 @@
 
     <!-- CurrenciesFragment -->
     <string name="currencies_title">Zoznam měn</string>
+    <string name="currencies_per_base_currency">1 %s/EUR</string>
 </resources>

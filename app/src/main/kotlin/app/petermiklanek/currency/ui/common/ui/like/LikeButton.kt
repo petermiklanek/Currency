@@ -5,8 +5,11 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.ImageViewBindingAdapter.setImageDrawable
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import app.petermiklanek.currency.R
 import app.petermiklanek.currency.tools.extensions.drawable
+import kotlinx.android.synthetic.main.layout_placeholder.view.*
 import kotlinx.android.synthetic.main.view_like_button.view.*
 
 class LikeButton @JvmOverloads constructor(
@@ -42,7 +45,7 @@ fun LikeButton.bindIsFavourite(isFavourite: Boolean) {
 @BindingAdapter("onLikeClick")
 fun LikeButton.bindOnLikeClick(callback: () -> Unit) {
     like_button.setOnClickListener {
-        setButton(!this.isFavourite)
         callback()
+        setButton(!this.isFavourite)
     }
 }

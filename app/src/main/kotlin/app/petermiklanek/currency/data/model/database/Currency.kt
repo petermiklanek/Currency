@@ -3,6 +3,7 @@ package app.petermiklanek.currency.data.model.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import app.petermiklanek.currency.tools.extensions.roundCurrencyRate
 
 @Entity(tableName = "currency")
 data class Currency(
@@ -20,5 +21,5 @@ data class Currency(
         )
     }
 
-    fun getRateText() = rate.toString()
+    fun getRateText() = rate.roundCurrencyRate()
 }

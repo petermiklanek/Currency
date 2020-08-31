@@ -5,14 +5,13 @@ import app.petermiklanek.currency.data.domain.currency.ObserveCurrenciesUseCase
 import app.petermiklanek.currency.data.domain.currency.SyncCurrenciesUseCase
 import app.petermiklanek.currency.data.domain.favourite.*
 import app.petermiklanek.currency.data.model.database.FavouriteCurrency
-import app.petermiklanek.currency.data.model.state.StateContent
 import timber.log.Timber
 import javax.inject.Inject
 
 class CurrenciesViewModel @Inject constructor(
     override val viewState: CurrenciesViewState,
     private val observeCurrenciesUseCase: ObserveCurrenciesUseCase,
-    private val observeFavouriteCurrenciesUseCase: ObserveFavouriteCurrenciesUseCase,
+    private val getFavouriteCurrenciesUseCase: GetFavouriteCurrenciesUseCase,
     private val addFavouriteCurrencyUseCase: AddFavouriteCurrencyUseCase,
     private val deleteFavouriteCurrencyUseCase: DeleteFavouriteCurrencyUseCase,
     private val syncCurrenciesUseCase: SyncCurrenciesUseCase
@@ -20,17 +19,20 @@ class CurrenciesViewModel @Inject constructor(
 
     override fun onStart() {
         with(viewState) {
-            observeCurrenciesUseCase.execute {
-                onNext {
-                    currencies.value = it
+            getFavouriteCurrenciesUseCase.execute {
+                onSuccess {
+                    favouriteCurrencies.value = it
+                    observeCurrencies()
                 }
             }
         }
+    }
 
+    private fun observeCurrencies() {
         with(viewState) {
-            observeFavouriteCurrenciesUseCase.execute {
+            observeCurrenciesUseCase.execute {
                 onNext {
-                    favouriteCurrencies.value = it
+                    currencies.value = it
                 }
             }
         }
@@ -41,11 +43,9 @@ class CurrenciesViewModel @Inject constructor(
             syncCurrenciesUseCase.execute {
                 onStart {
                     isRefreshing.value = true
-                    state.value = StateContent(Unit)
                 }
                 onSuccess {
                     isRefreshing.value = false
-                    state.value = StateContent(Unit)
                 }
                 onError {
                     isRefreshing.value = false
@@ -72,6 +72,9 @@ class CurrenciesViewModel @Inject constructor(
                 }
             }
         }
+    }
 
+    fun onBack() {
+        sendEvent(NavigateBackEvent)
     }
 }

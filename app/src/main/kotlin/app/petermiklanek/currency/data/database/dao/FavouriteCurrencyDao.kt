@@ -25,7 +25,7 @@ abstract class FavouriteCurrencyDao {
     abstract fun getAll(): Flow<List<FavouriteCurrencyAll>>
 
     @Query("SELECT * FROM favourite_currency")
-    abstract fun getFavouriteCurrencies(): Flow<List<FavouriteCurrency>>
+    abstract suspend fun getFavouriteCurrencies(): List<FavouriteCurrency>
 
     @Query("DELETE FROM favourite_currency WHERE currency_code = :code")
     abstract suspend fun delete(code: String)

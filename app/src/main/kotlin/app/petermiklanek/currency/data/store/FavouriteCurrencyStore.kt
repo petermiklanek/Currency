@@ -11,7 +11,7 @@ class FavouriteCurrencyStore @Inject constructor(
 ) {
     fun getAll(): Flow<List<FavouriteCurrencyAll>> = database.favouriteCurrencyDao().getAll()
 
-    fun getFavouriteCurrencies(): Flow<List<FavouriteCurrency>> = database.favouriteCurrencyDao().getFavouriteCurrencies()
+    suspend fun getFavouriteCurrencies(): List<FavouriteCurrency> = database.favouriteCurrencyDao().getFavouriteCurrencies()
 
     suspend fun addFavouriteCurrency(code: String) = database.favouriteCurrencyDao().insert(FavouriteCurrency(code))
 
